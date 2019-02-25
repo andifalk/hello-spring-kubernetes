@@ -1,0 +1,22 @@
+spring:
+    application:
+        name: demo
+    cloud:
+        kubernetes:
+            config:
+                namespace: default
+                sources:
+                  - name: ${spring.application.name}
+            reload:
+                enabled: true
+                mode: polling
+                period: 5000
+                strategy: refresh
+            secrets:
+                enabled: true    
+logging:
+  level:
+    org:
+        springframework:
+            cloud:
+                kubernetes: debug                

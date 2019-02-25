@@ -1,0 +1,9 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: demo
+  namespace: default
+data:
+  application.properties: |-
+    hello.message=k8s
+    hello.prefix=Hi

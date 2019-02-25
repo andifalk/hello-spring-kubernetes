@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: hello-kubernetes
+  name: hello-kubernetes
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello-kubernetes
+  template:
+    metadata:
+      labels:
+        app: hello-kubernetes
+    spec:
+      serviceAccountName: spring-kubernetes
+      containers:
+        - image: andifalk/hello-spring-kubernetes:latest
+          name: hello-spring-kubernetes
+          imagePullPolicy: Always
+          env:
+            - name: KUBERNETES_NAMESPACE
+              value: default 
+          #resources:
+          #  limits:
+          #    memory: "1024Mi"
+          #    cpu: "500m"
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true    
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            initialDelaySeconds: 3
+            periodSeconds: 5    
+          #volumeMounts:
+          #  - name: config-volume
+          #    mountPath: /etc/config    
+          #    readOnly: true
+      #volumes:
+       # - name: config-volume
+       #   configMap:
+       #     name: hello-spring-kubernetes
+      restartPolicy: Always        
