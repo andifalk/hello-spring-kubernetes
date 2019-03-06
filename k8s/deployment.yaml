@@ -28,19 +28,19 @@ spec:
           #    cpu: "500m"
           securityContext:
             allowPrivilegeEscalation: false
-            runAsNonRoot: true    
+            runAsNonRoot: true 
           livenessProbe:
             httpGet:
               path: /actuator/health
               port: 8080
-            initialDelaySeconds: 3
+            initialDelaySeconds: 5
             periodSeconds: 5    
-          #volumeMounts:
-          #  - name: config-volume
-          #    mountPath: /etc/config    
-          #    readOnly: true
-      #volumes:
-       # - name: config-volume
-       #   configMap:
-       #     name: hello-spring-kubernetes
+          volumeMounts:
+            - name: "spring-kubernetes-demo"
+              readOnly: true
+              mountPath: "/etc/secrets/spring-kubernetes-demo"
+      volumes:
+        - name: "spring-kubernetes-demo"
+          secret:
+            secretName: "spring-kubernetes-demo"
       restartPolicy: Always        

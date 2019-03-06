@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.1.3.RELEASE'
 	id 'java'
 	id "com.palantir.docker" version "0.21.0"
+	id 'com.adarshr.test-logger' version '1.6.0'
 }
 
 apply plugin: 'io.spring.dependency-management'
@@ -24,6 +25,15 @@ docker {
 	files bootJar.archivePath
 }
 
+test {
+    useJUnitPlatform()
+}
+
+testlogger {
+    showStandardStreams false
+    showPassedStandardStreams false
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
@@ -33,6 +43,10 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-config'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+	testImplementation('org.mockito:mockito-junit-jupiter')
+    testImplementation('org.junit.jupiter:junit-jupiter-api')
+    testImplementation('org.junit.jupiter:junit-jupiter-params')
+    testRuntime('org.junit.jupiter:junit-jupiter-engine')
 }
 
 dependencyManagement {
