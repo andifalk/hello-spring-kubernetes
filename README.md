@@ -15,9 +15,9 @@ As every web application must be secure all endpoints require authentication.
 The user credentials are configured using [Kubernetes Secrets](https://kubernetes.io/docs/concepts/configuration/secret/) mounted as volumes. This is recommended in favour of environment variables as these can easily be leaked into logs or via ```kubectl describe pod``` command.
 
 You may read the secrets using the Kubernetes client API as well. But this is not recommended as you have to give
-you deployed application rights to read all secrets in same namespace which might be a high security risk.
+your deployed application rights to read all secrets in same namespace which might be a high security risk.
 
-The user credentials are configuraed via these properties:
+The user credentials are configured by these properties:
 
 * user.username
 * user.password
@@ -39,6 +39,9 @@ You can pull it from [there](https://hub.docker.com/r/andifalk/hello-spring-kube
 ```
 docker pull andifalk/hello-spring-kubernetes:latest
 ```
+
+__Note__:   
+The container image uses a [Distroless Base Image for Java](https://github.com/GoogleContainerTools/distroless). This reduces not only the size of the resulting image but reduces the attack surface by only including the pure minimum that is required to run a Java application in a container.
 
 To deploy the container image to a Kubernetes cluster you first have to create the corresponding ConfigMap and Secrets:
 
