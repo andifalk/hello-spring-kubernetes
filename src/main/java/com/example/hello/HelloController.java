@@ -36,8 +36,8 @@ public class HelloController {
 
     @ResponseStatus(OK)
     @GetMapping
-    public Message sayHello(@RequestParam(required=false) String message) {
-        return new Message(defaultPrefix + " " + (message != null ? message : defaultMessage));
+    public Message sayHello() {
+        return new Message(String.format("%s %s", defaultPrefix, defaultMessage));
     }
 
     @ResponseStatus(CREATED)
