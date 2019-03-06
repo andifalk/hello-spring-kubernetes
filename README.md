@@ -75,16 +75,17 @@ securityContext:
 ...    
 ```            
 
-To access the deployed web application you need to expose it as a service or use port forwarding to the Pod like this:
+To access the deployed web application you need to expose it as a service or just use port forwarding directly to the Pod like this:
 
 ```
 kubectl port-forward pod/[Pod name] 8080:8080
 ```
 
-You have to repace [Pod name] with your concrete Pod name. You can get the name using:
+You have to replace [Pod name] with your concrete Pod name. You can get the name using:
 
 ```
 kubectl get pods
 ```
 
-
+With port forwarding enabled you should be able to access the deployed application using [localhost:8080](http://localhost:8080).
+In the login dialog you need to use the credentials as configured in the _secrets.yaml_ manifest.
