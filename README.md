@@ -33,8 +33,8 @@ The contained demo spring boot application exposes a simple RESTful API:
 ## Deploy the application
 
 The corresponding container image for this application is already 
-published on docker hub.
-You can pull it from there using:
+published on [docker hub](https://hub.docker.com).
+You can pull it from [there](https://hub.docker.com/r/andifalk/hello-spring-kubernetes) using:
 
 ```
 docker pull andifalk/hello-spring-kubernetes:latest
