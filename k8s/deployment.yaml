@@ -24,7 +24,7 @@ spec:
               value: default 
           #resources:
           #  limits:
-          #    memory: "1024Mi"
+          #    memory: "300Mi"
           #    cpu: "500m"
           securityContext:
             allowPrivilegeEscalation: false

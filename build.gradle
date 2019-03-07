@@ -17,7 +17,7 @@ repositories {
 }
 
 ext {
-	set('springCloudVersion', 'Greenwich.RELEASE')
+	set('springCloudVersion', 'Greenwich.SR1')
 }
 
 docker {
@@ -38,8 +38,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.cloud:spring-cloud-starter'
-	implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes'
 	implementation 'org.springframework.cloud:spring-cloud-starter-kubernetes-config'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
